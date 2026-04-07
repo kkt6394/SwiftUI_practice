@@ -6,10 +6,50 @@
 //
 
 import SwiftUI
+import Combine
+
+class SettingModel: ObservableObject {
+    
+    @Published var isAlarmON = false
+
+}
 
 struct EnvExampleView: View {
+    
+    @StateObject private var setting = SettingModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text(setting.isAlarmON ? "알람 받기" : "알람 받지 않기")
+            EnvFirstView()
+        }
+        .environmentObject(setting)
+    }
+}
+
+struct EnvFirstView: View {
+        
+    var body: some View {
+        Text("EnvFirstView")
+        EnvSecondView()
+    }
+}
+
+struct EnvSecondView: View {
+    var body: some View {
+        Text("EnvSecondView")
+        EnvLastView()
+    }
+}
+
+struct EnvLastView: View {
+    
+    @EnvironmentObject var setting: SettingModel
+    
+    var body: some View {
+        Text("EnvLastView")
+        Toggle("알림 설정", isOn: $setting.isAlarmON)
+
     }
 }
 

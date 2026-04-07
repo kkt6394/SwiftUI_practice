@@ -55,6 +55,7 @@
 		B891F3492F8354F700A174B2 /* Exceptions for "SwiftUI_practice" folder in "BasicWidgetExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Network/BasicView.swift,
 				Network/CoinView.swift,
 				Network/EnvExampleView.swift,
 				Network/UpbitAPI.swift,
